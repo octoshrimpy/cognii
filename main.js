@@ -53,4 +53,31 @@ $(document).ready(function(){
     currentlyPlaying = new Audio(`${randFileLoc}/${randomFileName}.mp3`)
     currentlyPlaying.play()
   })
+
+
+  //every 5 seconds: 5 second warmup, 5 second playing, 5 second cooldown: 15 seconds total
+
+  //get new file from same array
+
+  // grab a 15 second clip from the file
+
+    //get file length
+
+    // subtract 15 seconds from file length
+
+    // get random time between 0 and subtraction above
+
+    // create new audio, set starting time to math above
+
+  // fade in for 5 seconds
+
+  // play for 5 seconds
+
+  // grab new 15 second clip from new file
+
+  // fade out first file
+
+  // fade in second file
+
+
 })
