@@ -1,13 +1,34 @@
-// this is where all the js will be stored
+
+const audioSources = {
+  'classical': {
+    'src': '',
+    'files': [
+      '',
+      '',
+      ''
+    ]
+  },
+  'hard': {
+
+  },
+  'meditation': {
+
+  }
+}
+
+
 $(document).ready(function(){
 
   let isPlaying = false;
-  
+  const rain = new Audio('./test.mp3')
+
   $(document).click(function(){
     if(!isPlaying){
-      const rain = new Audio('./test.mp3')
       rain.play()
       isPlaying = true;
+    }else {
+      rain.pause()
+      isPlaying = false;
     }
   })
 })

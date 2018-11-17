@@ -1,0 +1,26 @@
+.button {
+  padding: 0.5rem;
+  border-radius: 3px;
+  background: rgba(200,220,250,0.5);
+
+  display: inline-flex;
+  cursor: pointer;
+  user-select: none;
+}
+
+.button:hover {
+  background: rgba(200,220,250, 0.7);
+}
+.button:active {
+  background: rgba(200,220,250, 1);
+}
+
+.button:not(:last-child) {
+  margin-right: 1rem;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
