@@ -1,11 +1,59 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
 <script src="./main.js" charset="utf-8"></script>
 
-<link rel="stylesheet" href="./main.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="./main.min.css">
 
 <div class="choices">
 </div>
 <div class="controls">
   <div class="button">start</div>
   <div class="button">stop</div>
+</div>
+
+<div class="screens">
+  <div class="screen" id="welcome">
+    <p>Hi, I'm Cognii!</p>
+    <p>I was created to help people be aware of how they feel, because that is the first step on feeling better.</p>
+    <p>Before we start, would you like to tell me how you're feeling at the moment?</p>
+    <p class="im-feeling">I'm feeling . . .</p>
+    <p class="skip">maybe later</p>
+  </div>
+
+  <div class="screen" id="feeling">
+    How are you feeling at the moment?
+
+    <div class="feelings">
+      <div class="list-1">
+        <div class="feeling" data-feeling="confident">Confident</div>
+        <div class="feeling" data-feeling="hopeful">Hopeful</div>
+        <div class="feeling" data-feeling="calm">Calm</div>
+        <div class="feeling" data-feeling="tired">Tired</div>
+        <div class="feeling" data-feeling="annoyed">Annoyed</div>
+        <div class="feeling" data-feeling="stressed">Stressed</div>
+        <div class="feeling" data-feeling="helpless">Helpless</div>
+        <div class="feeling" data-feeling="alone">Alone</div>
+        <div class="feeling" data-feeling="panicked">Panicked</div>
+        <div class="feeling" data-feeling="weighed down">Weighed down</div>
+      </div>
+      <div class="list-2"></div>
+    </div>
+  </div>
+
+  <div class="screen" id="feeling-slider">
+
+  </div>
+
+  <div class="screen" id="app">
+    <div class="audio" data-source="wind">
+      <div class="toggle-btn">
+        <i class="fas fa-wind"></i>
+      </div>
+      <div class="volume-slider"></div>
+    </div>
+
+    <div class="random">choose for me</div>
+    <div class="stop">stop</div>
+  </div>
+
 </div>

@@ -1,0 +1,101 @@
+
+@import './node_modules/bulma/sass/utilities/initial-variables';
+@import './node_modules/bulma/sass/utilities/functions';
+
+// flatUI colors
+$midnight:    #2c3e50;
+$asphalt:     #34495e;
+$bulma-black: #4a4a4a;
+$asbestos:    #7f8c8d;
+$concrete:    #95a5a6;
+$silver:      #bdc3c7;
+$clouds:      #ecf0f1;
+$emerald:     #2ecc71;
+$nephritis:   #27ae60;
+$turquoise:   #1abc9c;
+$greensea:    #16a085;
+$amethyst:    #9b59b6;
+$wisteria:    #8e44ad;
+$sunflower:   #f1c40f;
+$orange:      #f39c12;
+$carrot:      #e67e22;
+$pumpkin:     #d35400;
+$alizarin:    #e74c3c;
+$pomegranate: #c0392b;
+$river:       #3498db;
+$belize:      #2980b9;
+
+
+//MDL box-shadows
+$shadow-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+$shadow-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+$shadow-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+$shadow-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+$shadow-5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+$shadow-border: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+
+
+//@include animate; anywhere for animation
+@mixin animate {
+  transition: all 0.15s ease-in-out;
+}
+
+@mixin custom-scroll($hover:false) {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgba(255,255,255,.05);
+    border-radius: 0 0 2px;
+  }
+
+  @if $hover == on-hover {
+    @include animate;
+    &:hover::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+      background-color: rgba(0,0,0,.25);
+      margin-right: 2px;
+    }
+  } @else {
+    &::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+      background-color: rgba(0,0,0,.25);
+      margin-right: 2px;
+    }
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    background: rgba(0,0,0,0.4);
+  }
+}
+
+
+/////////////////////////////
+//   set custom colors
+/////////////////////////////
+
+
+
+
+
+@import "./node_modules/bulma/sass/utilities/derived-variables";
+/////////////////////////////
+// add new colors to maps
+/////////////////////////////
+
+
+
+
+
+@import "./node_modules/bulma/bulma"
