@@ -244,6 +244,7 @@ function play15SecClip(choice){
 //TODO: extract config of sounds into own JSON file
 //TODO: extract TODO into own file
 //TODO: extract TODO file into github issues
+//TODO: add toggle function and UX for buttons
 
 
 
