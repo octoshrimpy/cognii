@@ -24,12 +24,50 @@ const audioSources = {
       '2'
     ]
   },
-  'fire sounds': {
-    'src': './Ambient sounds/Fire sounds',
+  'forest': {
+    'src': './Ambient sounds/forest',
+    'files': [
+      '0',
+    ]
+  },
+  'fire': {
+    'src': './Ambient sounds/fire',
     'files': [
       '0',
       '1',
-      '2'
+      '2',
+    ]
+  },
+  'rain': {
+    'src': './Ambient sounds/rain',
+    'files': [
+      '0',
+      '1',
+    ]
+  },
+  'seagulls': {
+    'src': './Ambient sounds/seagulls',
+    'files': [
+      '0',
+    ]
+  },
+  'stream': {
+    'src': './Ambient sounds/stream',
+    'files': [
+      '0',
+    ]
+  },
+  'thunder': {
+    'src': './Ambient sounds/thunder',
+    'files': [
+      '0',
+      '1',
+    ]
+  },
+  'wind': {
+    'src': './Ambient sounds/wind',
+    'files': [
+      '0',
     ]
   }
 }
