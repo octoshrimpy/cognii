@@ -30,6 +30,14 @@ const audioSources = {
       '0',
     ]
   },
+  'fire': {
+    'src': './Ambient sounds/fire',
+    'files': [
+      '0',
+      '1',
+      '2',
+    ]
+  },
   'rain': {
     'src': './Ambient sounds/rain',
     'files': [
