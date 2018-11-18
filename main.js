@@ -33,9 +33,9 @@ const audioSources = {
   'fire': {
     'src': './Ambient sounds/fire',
     'files': [
-      '0',
+      // '0',
       '1',
-      '2',
+      // '2',
     ]
   },
   'rain': {
@@ -237,11 +237,13 @@ function play15SecClip(choice){
 
 /////////////////////
 
-//TODO: figure out 5sec fade logic
+//DONE: figure out 5sec fade logic
 //TODO: add volume sliders
 //TODO: create UI
-
-
+//TODO: extract length of audio snippets into variable
+//TODO: extract config of sounds into own JSON file
+//TODO: extract TODO into own file
+//TODO: extract TODO file into github issues
 
 
 
