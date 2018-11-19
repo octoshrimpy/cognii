@@ -76,6 +76,7 @@ const audioSources = {
 $(document).ready(function(){
 
   audioDevices = {}
+  audioPlaying = {}
 
   for (source in audioSources){
     __createAudioDevices.call(this)
@@ -83,20 +84,34 @@ $(document).ready(function(){
   }
 
 
-  $(document).on('click', '.choice:not(.is-choice)', function(){
-    __toggleStyling.call(this)
-
+  $(document).on('click', '.choice', function(){
     const choice = $(this).data('choice')
 
-    setInterval(function(){
-      play15SecClip.call(this, choice)
-    }, 15000)
+    // __toggleStyling.call(this)
+    __toggleLogicAndStyling.call(this, choice)
+
+
   })
 })
 
+function __toggleLogicAndStyling(choice){
+  // logic
+  if(__choiceIsPlaying(choice)){
+    console.log('playing; stoping sound . . .')
+    clearInterval(audioPlaying[choice])
+    fadeOut(__grabPlayingDevice(choice))
+  }else {
+    console.log('stopped; starting sound . . .')
+    play15SecClip(choice)
 
+    audioPlaying[choice] = setInterval(function(){
+      play15SecClip(choice)
+    }, 15000)
+  }
 
-
+  // styling
+  $(this).toggleClass('is-active')
+}
 
 
 function fadeIn(audio, time = 5000){
@@ -113,26 +128,6 @@ function fadeOut(audio, time = 5000){
     audio.src = ''
   } )
 }
-
-//
-//
-// Audio.prototype.fadeIn = function(time = 5000){
-//   this.volume = 0
-//   this.play()
-//   return new Promise((resolve, reject) =>{
-//     $(this).animate({volume: 1}, time, ()=> resolve());
-//   })
-// }
-//
-// Audio.prototype.fadeOut = function(time = 5000){
-//   $(this).animate({volume: 0}, time, ()=> this.pause() )
-// }
-
-
-
-
-
-
 
 
 function __createAudioDevices(){
@@ -151,11 +146,6 @@ function __createChoiceBtn(){
   $('.choices').append(choiceBtn)
 }
 
-function __toggleStyling(){
-  $('.choice.is-choice').removeClass('is-choice')
-  $(this).addClass('is-choice')
-}
-
 function __grabRandFile(choice){
   const randFileLoc = audioSources[choice].src
   const randFileArray = audioSources[choice].files
@@ -172,14 +162,16 @@ function __grabPlayingDevice(choice){
   return audioDevices[choice].filter(device => !device.paused || device.currentTime)[0]
 }
 
-
+function __choiceIsPlaying(choice){
+  return typeof __grabPlayingDevice(choice) == 'undefined' ? false : true;
+}
 
 function play15SecClip(choice){
 
-  const fileToPlay = __grabRandFile.call(this, choice)
+  const fileToPlay = __grabRandFile(choice)
 
-  const availableDevice = __grabAvailableDevice.call(this, choice)
-  const playingDevice = __grabPlayingDevice.call(this, choice)
+  const availableDevice = __grabAvailableDevice(choice)
+  const playingDevice = __grabPlayingDevice(choice)
 
   fadeOut(playingDevice)
 
@@ -212,7 +204,6 @@ function play15SecClip(choice){
           fadeOut(availableDevice)
         }, 10000)
       })
-
     })
 }
 
