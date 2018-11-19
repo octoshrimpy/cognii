@@ -228,14 +228,16 @@ function play15SecClip(choice){
 
 /////////////////////
 
-//DONE: figure out 5sec fade logic
+//TODO: figure out why fadeout isn't happening immediately on toggle-off
 //TODO: add volume sliders
-//TODO: create UI
 //TODO: extract length of audio snippets into variable
 //TODO: extract config of sounds into own JSON file
 //TODO: extract TODO into own file
 //TODO: extract TODO file into github issues
-//TODO: add toggle function and UX for buttons
+
+//DONE: add toggle function and UX for buttons
+//DONE: create UI
+//DONE: figure out 5sec fade logic
 
 
 
