@@ -25,13 +25,13 @@ const audioSources = {
     ]
   },
   'forest': {
-    'src': './Ambient sounds/forest',
+    'src': './ambient/forest',
     'files': [
       '0',
     ]
   },
   'fire': {
-    'src': './Ambient sounds/fire',
+    'src': './ambient/fire',
     'files': [
       // '0',
       '1',
@@ -39,33 +39,33 @@ const audioSources = {
     ]
   },
   'rain': {
-    'src': './Ambient sounds/rain',
+    'src': './ambient/rain',
     'files': [
       '0',
       '1',
     ]
   },
   'seagulls': {
-    'src': './Ambient sounds/seagulls',
+    'src': './ambient/seagulls',
     'files': [
       '0',
     ]
   },
   'stream': {
-    'src': './Ambient sounds/stream',
+    'src': './ambient/stream',
     'files': [
       '0',
     ]
   },
   'thunder': {
-    'src': './Ambient sounds/thunder',
+    'src': './ambient/thunder',
     'files': [
       '0',
       '1',
     ]
   },
   'wind': {
-    'src': './Ambient sounds/wind',
+    'src': './ambient/wind',
     'files': [
       '0',
     ]
