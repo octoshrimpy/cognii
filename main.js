@@ -1,21 +1,21 @@
 
 const audioSources = {
-  'classical': {
-    'src': './classical',
-    'files': [
-      '0',
-      '1',
-      '2'
-    ]
-  },
-  'hard': {
-    'src': './hard',
-    'files': [
-      '0',
-      '1',
-      '2'
-    ]
-  },
+  // 'classical': {
+  //   'src': './classical',
+  //   'files': [
+  //     '0',
+  //     '1',
+  //     '2'
+  //   ]
+  // },
+  // 'hard': {
+  //   'src': './hard',
+  //   'files': [
+  //     '0',
+  //     '1',
+  //     '2'
+  //   ]
+  // },
   'meditation': {
     'src': './meditation',
     'files': [
@@ -139,7 +139,7 @@ function __createAudioDevices(){
 
 function __createChoiceBtn(){
   const choiceBtn = $('<div>')
-    .addClass('button choice')
+    .addClass('button choice is-white')
     .data('choice', source)
     .text(source)
 

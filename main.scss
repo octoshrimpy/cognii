@@ -1,10 +1,31 @@
 @import './__template';
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .button {
+    @include animate;
     &:not(:last-child) {
         margin-right: 1rem;
     }
 
-    &.is-active {
-        background: $primary;
+    &:hover {
+        box-shadow: $shadow-1;
     }
+
+    &.is-active {
+        box-shadow: $shadow-2;
+        background: $river;
+    }
+}
+
+.controls {
+    display: none;
+}
+
+.screens {
+    display: none;
 }
