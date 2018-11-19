@@ -1,13 +1,23 @@
 @import './__template';
 
+html {
+    overflow: hidden;
+}
+
 body {
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: bgFade 120s infinite;
 }
 
 .button {
     @include animate;
+
+    &.is-white {
+        background: transparentize($white, 0.65);
+    }
+
     &:not(:last-child) {
         margin-right: 1rem;
     }
@@ -28,4 +38,13 @@ body {
 
 .screens {
     display: none;
+}
+
+
+@keyframes bgFade{
+    0%     { background: hsl(0,   75, 75) };
+    25%    { background: hsl(90,  75, 75) };
+    50%    { background: hsl(180, 75, 75) };
+    75%    { background: hsl(270, 75, 75) };
+    100%   { background: hsl(360, 75, 75) };
 }
