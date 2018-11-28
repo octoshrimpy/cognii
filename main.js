@@ -72,6 +72,31 @@ const audioSources = {
   }
 }
 
+////////////////////////////////////////////////////////////
+
+//         commented while trying to figure out 
+//         how to import from json the easy way.
+
+////////////////////////////////////////////////////////////
+
+// var audioSources = (function() {
+//   var json = null;
+//   $.ajax({
+//       'async': false,
+//       'global': false,
+//       'url': "/audiosources.json",
+//       'dataType': "json",
+//       'success': function (data) {
+//           json = data;
+//       }
+//   });
+//   return json;
+// })();
+
+// const audioSources = {
+//
+// }
+
 
 $(document).ready(function(){
 
