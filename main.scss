@@ -1,4 +1,5 @@
 @import './__template';
+@import './__breakpoints';
 
 html {
     overflow: hidden;
@@ -8,28 +9,65 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: bgFade 120s infinite;
 }
 
+bg {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+    &.light {
+        animation: bgFade-light 120s infinite;
+    }
+    &.med {
+        animation: bgFade-med 120s infinite;
+    }
+    &.dark {
+        animation: bgFade-dark 120s infinite;
+    }
+}
+
+.bg-shade {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+
+    display: flex;
+    font-size: 0.5rem;
+
+    .bg-choice {
+        @include animate;
+        background: transparentize($clouds, 0.95);
+        color: $black;
+        margin: 0.5rem;
+
+        &:hover {
+            background: transparentize($clouds, 0.85);
+        }
+        &.is-selected {
+            background: transparentize($clouds, 0.65);
+        }
+    }
+}
+
+
 .button {
-    @include animate;
-
-    &.is-white {
-        background: transparentize($white, 0.65);
-    }
-
-    &:not(:last-child) {
-        margin-right: 1rem;
-    }
+    border-radius: 2rem;
+    background: transparent;
 
     &:hover {
-        box-shadow: $shadow-1;
+        background: transparentize($clouds, 0.65);
     }
 
-    &.is-active {
-        box-shadow: $shadow-2;
-        background: $river;
+    @include animate;
+    border: none;
+    user-select: none;
+
+    @include respond-to('small'){
+        font-size: 3em;
     }
+
+
 }
 
 .controls {
@@ -41,10 +79,90 @@ body {
 }
 
 
-@keyframes bgFade{
+.choices {
+    display: flex;
+
+    @include respond-to('small'){
+        height: 100%;
+        width: 100%;
+        padding: 8rem;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-gap: 3rem;
+    }
+
+    @include respond-to('medium'){
+
+        height: 100%;
+        width: 100%;
+        padding: 8rem;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-gap: 3rem;
+    }
+
+    .choice {
+        margin: 1rem;
+        background: transparentize($clouds, 0.65);
+        color: $black;
+
+        @include respond-to('small'){
+            align-self: center;
+            height: 100%;
+        }
+
+        @include respond-to('medium'){
+            align-self: center;
+            height: 100%;
+            font-size: 2em;
+        }
+
+        @include respond-to('large'){
+            border-radius: 10px;
+        }
+
+        @include respond-to('large'){
+            &:hover {
+                box-shadow: $shadow-1;
+                background: transparentize($clouds, 0.45);
+            }
+        }
+
+        &.is-active {
+            box-shadow: $shadow-2;
+            background: transparentize($white, 0.35);
+        }
+    }
+}
+.button:focus:not(:active), .button.is-focused:not(:active) {
+    box-shadow: none;
+}
+button:focus {outline:0;}
+
+
+
+@keyframes bgFade-light{
     0%     { background: hsl(0,   75, 75) };
     25%    { background: hsl(90,  75, 75) };
     50%    { background: hsl(180, 75, 75) };
     75%    { background: hsl(270, 75, 75) };
     100%   { background: hsl(360, 75, 75) };
+}
+
+@keyframes bgFade-med{
+    0%     { background: hsl(0,   40, 50) };
+    25%    { background: hsl(90,  40, 50) };
+    50%    { background: hsl(180, 40, 50) };
+    75%    { background: hsl(270, 40, 50) };
+    100%   { background: hsl(360, 40, 50) };
+}
+
+@keyframes bgFade-dark{
+    0%     { background: hsl(0,   20, 20) };
+    25%    { background: hsl(90,  20, 20) };
+    50%    { background: hsl(180, 20, 20) };
+    75%    { background: hsl(270, 20, 20) };
+    100%   { background: hsl(360, 20, 20) };
 }

@@ -74,7 +74,7 @@ const audioSources = {
 
 ////////////////////////////////////////////////////////////
 
-//         commented while trying to figure out 
+//         commented while trying to figure out
 //         how to import from json the easy way.
 
 ////////////////////////////////////////////////////////////
@@ -108,7 +108,20 @@ $(document).ready(function(){
     __createChoiceBtn.call(this)
   }
 
+  // toggling a theme
+  $(document).on('click', '.bg-choice', function(){
+    const shadeChoice = $(this).data('shade')
 
+    $('.bg-choice.is-selected').removeClass('is-selected')
+    $(this).addClass('is-selected')
+
+    $(this).addClass('is-choice')
+    $(`bg.${shadeChoice}`).fadeIn(5000)
+    $(`bg:not(.${shadeChoice})`).fadeOut(5000)
+  })
+
+
+  // picking a sound option
   $(document).on('click', '.choice', function(){
     const choice = $(this).data('choice')
 
@@ -164,7 +177,7 @@ function __createAudioDevices(){
 
 function __createChoiceBtn(){
   const choiceBtn = $('<div>')
-    .addClass('button choice is-white')
+    .addClass('button choice ')
     .data('choice', source)
     .text(source)
 
@@ -253,13 +266,24 @@ function play15SecClip(choice){
 
 /////////////////////
 
+//TODO: animate between custom light/med/dark themes for the shade selection buttons.
+//TODO: create audio objects that are knowledgeable about themselves (like fireplace sparks)
 //TODO: figure out why fadeout isn't happening immediately on toggle-off
 //TODO: add volume sliders
 //TODO: extract length of audio snippets into variable
-//TODO: extract config of sounds into own JSON file
 //TODO: extract TODO into own file
 //TODO: extract TODO file into github issues
+//TODO: extract audio files into more spread-out audio clips.
+//TODO: add intensity slider, that adds more layers at once. (not just 2)
+//TODO: extract config of sounds into own JSON file
 
+
+
+
+//DONE: implement night mode switch
+//DONE: remove hover from smaller screens ( fake "on" state )
+//DONE: figure out colors for night mode
+//DONE: mobile interface
 //DONE: add toggle function and UX for buttons
 //DONE: create UI
 //DONE: figure out 5sec fade logic
