@@ -266,6 +266,7 @@ function play15SecClip(choice){
 
 /////////////////////
 
+//TODO: change bg colors depending on the main color of what you're listening to
 //TODO: animate between custom light/med/dark themes for the shade selection buttons.
 //TODO: create audio objects that are knowledgeable about themselves (like fireplace sparks)
 //TODO: figure out why fadeout isn't happening immediately on toggle-off
