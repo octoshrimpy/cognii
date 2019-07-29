@@ -154,10 +154,19 @@ function __toggleLogicAndStyling(choice){
 
 function fadeIn(audio, time = 5000){
   audio.volume = 0
-  audio.play()
+
+  let playPromise = audio.play()
+
   return new Promise((resolve, reject) =>{
-    $(audio).animate({volume: 1}, time, ()=> resolve());
+
+    if(playPromise !== undefined) {
+      playPromise.then(() => {
+        $(audio).animate({volume: 1}, time, ()=> resolve());
+      })
+    }
+
   })
+
 }
 
 function fadeOut(audio, time = 5000){
@@ -232,7 +241,7 @@ function play15SecClip(choice){
       const maxLen = Math.floor(duration) - 15
       startPoint = Math.floor(Math.random() * maxLen)
 
-      console.log(`${fileToPlay}: ${startPoint}`)
+      console.log(new Date().getTime(), `: ${fileToPlay}: ${startPoint}`)
     })
     .then(()=>{
       availableDevice.currentTime = startPoint
@@ -259,15 +268,17 @@ function play15SecClip(choice){
 
 
 
-
-
+/////////////////////
+// new ideas
+// cognii rebranded for places instead of just sounds.
+// redone from scratch
+//
 
 
 
 /////////////////////
 
 //TODO: change bg colors depending on the main color of what you're listening to
-//TODO: animate between custom light/med/dark themes for the shade selection buttons.
 //TODO: create audio objects that are knowledgeable about themselves (like fireplace sparks)
 //TODO: figure out why fadeout isn't happening immediately on toggle-off
 //TODO: add volume sliders
@@ -281,6 +292,7 @@ function play15SecClip(choice){
 
 
 
+//DONE: animate between custom light/med/dark themes for the shade selection buttons.
 //DONE: implement night mode switch
 //DONE: remove hover from smaller screens ( fake "on" state )
 //DONE: figure out colors for night mode
