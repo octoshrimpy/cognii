@@ -98,58 +98,95 @@ const audioSources = {
 // }
 
 
+
+
+
 $(document).ready(function(){
+
+
 
   audioDevices = {}
   audioPlaying = {}
+  
+  function __createAudioDevices(source){
+    audioDevices[source] = [
+      new Audio(''),
+      new Audio('')
+    ]
+    log(audioDevices)
+  }
 
+  function __createChoiceBtn(source){
+    const btn = document.createElement('div')
+    btn.classList.add('button', 'choice')
+    btn.setAttribute('data-choice', source)
+    btn.innerHTML = source
+    let choices = document.querySelector('.choices')
+    choices.append(btn)
+  }
+
+  function __switchToBg(){
+
+    const shadeChoice = this.getAttribute('data-shade')
+    let selected = document.querySelectorAll('.bg-choice.is-selected')
+    selected.forEach(elm => elm.classList.remove('is-selected'))
+    this.classList.add('is-selected')
+    
+    let bgs = document.querySelectorAll('bg')
+    bgs.forEach(bg => bg.classList.remove('is-selected'))
+
+    let bg_selected = document.querySelector(`bg.${shadeChoice}`)
+    bg_selected.classList.add('is-selected')
+  }
+
+  function __toggleAudio(){
+    const choice = this.getAttribute('data-choice')
+    __toggleLogicAndStyling.call(this, choice)
+
+  }
+
+    
+  function __toggleLogicAndStyling(choice){
+    // logic
+
+    if(__choiceIsPlaying(choice)){
+      console.log('playing; stoping sound . . .')
+      clearInterval(audioPlaying[choice])
+      fadeOut(__grabPlayingDevice(choice))
+    }else {
+      console.log('stopped; starting sound . . .')
+      play15SecClip(choice)
+
+      audioPlaying[choice] = setInterval(function(){
+        play15SecClip(choice)
+      }, 15000)
+    }
+
+    // styling
+    $(this).toggleClass('is-active')
+  }
+
+
+  // create audio elms and buttons from sources available
   for (source in audioSources){
-    __createAudioDevices.call(this)
-    __createChoiceBtn.call(this)
+    __createAudioDevices(source)
+    __createChoiceBtn(source)
   }
 
   // toggling a theme
-  $(document).on('click', '.bg-choice', function(){
-    const shadeChoice = $(this).data('shade')
+  let bgs = document.querySelectorAll(".bg-choice")
 
-    $('.bg-choice.is-selected').removeClass('is-selected')
-    $(this).addClass('is-selected')
-
-    $(this).addClass('is-choice')
-    $(`bg.${shadeChoice}`).fadeIn(5000)
-    $(`bg:not(.${shadeChoice})`).fadeOut(5000)
+  bgs.forEach(bg => {
+    bg.addEventListener('click', __switchToBg)
   })
 
 
   // picking a sound option
-  $(document).on('click', '.choice', function(){
-    const choice = $(this).data('choice')
-
-    // __toggleStyling.call(this)
-    __toggleLogicAndStyling.call(this, choice)
-
-
-  })
+  let choices = document.querySelectorAll('.choice')
+  choices.forEach(choice => choice.addEventListener('click', __toggleAudio))
+  
 })
 
-function __toggleLogicAndStyling(choice){
-  // logic
-  if(__choiceIsPlaying(choice)){
-    console.log('playing; stoping sound . . .')
-    clearInterval(audioPlaying[choice])
-    fadeOut(__grabPlayingDevice(choice))
-  }else {
-    console.log('stopped; starting sound . . .')
-    play15SecClip(choice)
-
-    audioPlaying[choice] = setInterval(function(){
-      play15SecClip(choice)
-    }, 15000)
-  }
-
-  // styling
-  $(this).toggleClass('is-active')
-}
 
 
 function fadeIn(audio, time = 5000){
@@ -168,22 +205,6 @@ function fadeOut(audio, time = 5000){
 }
 
 
-function __createAudioDevices(){
-  audioDevices[source] = [
-    new Audio(''),
-    new Audio('')
-  ]
-}
-
-function __createChoiceBtn(){
-  const choiceBtn = $('<div>')
-    .addClass('button choice ')
-    .data('choice', source)
-    .text(source)
-
-  $('.choices').append(choiceBtn)
-}
-
 function __grabRandFile(choice){
   const randFileLoc = audioSources[choice].src
   const randFileArray = audioSources[choice].files
@@ -197,10 +218,12 @@ function __grabAvailableDevice(choice){
 }
 
 function __grabPlayingDevice(choice){
+  // console.log(audioDevices[choice])
   return audioDevices[choice].filter(device => !device.paused || device.currentTime)[0]
 }
 
 function __choiceIsPlaying(choice){
+//   console.log(__grabPlayingDevice(choice))
   return typeof __grabPlayingDevice(choice) == 'undefined' ? false : true;
 }
 
@@ -219,9 +242,9 @@ function play15SecClip(choice){
   const promise = new Promise((resolve, reject) => {
 
     if( isNaN(availableDevice.duration) ){
-      $(availableDevice).one("loadedmetadata", function(){
+      availableDevice.addEventListener("loadmetadata", function(){
         resolve(availableDevice.duration)
-      })
+      }, {once: true})
     } else {
       resolve(availableDevice.duration)
     }
@@ -294,3 +317,8 @@ function play15SecClip(choice){
 
 
 /////////////////////
+
+let log = (...args) => {
+  let message = "\n" + args.join(' ')
+  console.log(message)
+}

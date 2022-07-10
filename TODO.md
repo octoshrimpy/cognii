@@ -1,0 +1,3 @@
+ - [ ] move audio json from main.js to its own js file
+ - [ ] remove jquery
+ - [ ] move all audio into ./audio

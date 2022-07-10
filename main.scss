@@ -15,6 +15,12 @@ bg {
     height: 100%;
     width: 100%;
     position: absolute;
+    transition: opacity ease-in-out 5s;
+    opacity: 0;
+
+    &.is-selected {
+        opacity: 1;
+    }
 
     &.light {
         animation: bgFade-light 120s infinite;
